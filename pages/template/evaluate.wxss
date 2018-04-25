@@ -1,0 +1,149 @@
+.score {
+  width: 100%;
+  height: 170rpx;
+  border-top: 25rpx solid #F0F0F0;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  border-bottom: 20rpx solid #F0F0F0;
+}
+
+.merchants_score_container {
+  display: flex;
+  flex-direction: column;
+  margin: 20rpx 40rpx 20rpx 40rpx;
+  width: 150rpx;
+  height: 150rpx;
+}
+
+.merchants_score_text {
+  font-size: xx-small;
+}
+
+.merchants_score {
+  font-size: xx-large;
+  color: #FFd161;
+}
+
+.star_evaluate_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 250rpx;
+  height: 62px;
+  font-size: xx-small;
+  margin: 20rpx 50rpx 0rpx 0rpx;
+}
+
+.star_ranking {
+  height: 20rpx;
+  width: 125rpx;
+  overflow: hidden;
+  background-size: 25rpx 20rpx;
+}
+
+.star_score {
+  height: 20rpx;
+  width: 100rpx;
+  overflow: hidden;
+  background-size: 25rpx 20rpx;
+}
+
+.star_container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+.distribution_score_container {
+  display: flex;
+  flex-direction: column;
+  margin: 20rpx 0rpx 20rpx 0rpx;
+  padding: 0rpx 0rpx 0rpx 40rpx;
+  width: 150rpx;
+  height: 60px;
+  color: #969696;
+  border-left: 1px solid #DDDDDD;
+}
+
+.distribution_score_text {
+  font-size: xx-small;
+}
+
+.distribution_score {
+  font-size: xx-large;
+}
+
+.evaluate_tag_container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 15rpx 0rpx 15rpx 10rpx;
+  border-bottom: 20rpx solid #F0F0F0;
+}
+
+.evaluate_tag_text {
+  height: 30rpx;
+  font-size: x-small;
+  border:  1px solid #DDDDDD;
+  margin: 10rpx;
+  padding: 8rpx 20rpx 8rpx 20rpx;
+}
+
+.client_evaluate {
+  border-bottom: 1px solid #DDDDDD;
+  padding-bottom: 35rpx;
+}
+
+.buddha {
+  width: 100rpx;
+  height: 100rpx;
+  margin-left: 35rpx;
+  margin-top: 20rpx;
+}
+
+.top_container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.name_star_box {
+  display: flex;
+  flex-direction: column;
+  font-size: small;
+  margin: 25rpx 20rpx 0rpx 20rpx;
+}
+
+.client_evaluate_star {
+  margin-top: 15rpx;
+}
+
+.top_left_container {
+  display: flex;
+  flex-direction: row;
+}
+
+.date {
+  font-size: xx-small;
+  color: #969696;
+  margin: 20rpx 30rpx 0rpx 0rpx;
+}
+
+.client_evaluate_text {
+  font-size: small;
+  margin-left: 150rpx;
+  margin-right: 30rpx;
+  color: #646464;
+}
+
+.merchant_evaluate_text {
+  font-size: small;
+  border-top: 1px solid #DDDDDD;
+  margin: 30rpx 30rpx 0rpx 150rpx;
+  padding-top: 30rpx;
+  color: #646464;
+}

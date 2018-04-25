@@ -1,0 +1,168 @@
+.order_page_container {
+  display: flex;
+  flex-direction: row;
+}
+
+.left_category_container {
+  width: 200rpx;
+  background-color: rgb(244, 244, 244);
+  font-size: small;
+  color: #646464;
+}
+
+.category {
+  padding: 30rpx 30rpx 30rpx 30rpx;
+}
+
+.category_select {
+  background-color: white;
+}
+
+::-webkit-scrollbar{
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+
+.order_menu_container {
+  width: 550rpx;
+  height: 1100rpx;
+}
+
+.category_menu_img {
+  width: 150rpx;
+  height: 150rpx;
+}
+
+.dish_container {
+  height: 150rpx;
+  padding: 20rpx;
+  display: flex;
+  flex-direction: row;
+}
+
+.dish_name_cost {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20rpx;
+  width: 340rpx;
+}
+
+.dish_name{
+  font-size: small;
+  font-weight: 600;
+  height: 40rpx;
+  overflow: hidden;
+}
+
+.dosh_detail {
+  font-size: xx-small;
+  font-weight: 100;
+  margin-top: 15rpx;
+  height: 40rpx;
+  overflow: hidden;
+}
+
+.dish_buttom {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.reduce {
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 30rpx;
+  text-align: center;
+  border: 1px solid #EEEEEE;
+  line-height: 32rpx;
+}
+
+.add {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.price_container {
+  color : #ff5a5a;
+}
+
+.reduce_add_dish {
+  display: flex;
+  flex-direction: row;
+}
+
+.dish_num {
+  margin: 0rpx 18rpx 0rpx 18rpx;
+  font-size: x-small;
+  line-height: 40rpx;
+  height: 40rpx;
+}
+
+.account_foot {
+  width: 100%;
+  height: 300rpx;
+  position: absolute;
+  bottom: 0;
+  z-index: 1;
+}
+
+.account {
+  width: 100%;
+  height: 110rpx;
+  background-color: rgb(51, 51, 51);
+  position: absolute;
+  bottom: 0;
+}
+
+.cost {
+  height: 100%;
+  color: white;
+  font-size: x-large;
+  line-height: 100rpx;
+  width: 300rpx;
+}
+
+.cost_container {
+  margin-left: 170rpx;  
+  height: 100%;
+  display:flex;
+  flex-direction:row;
+  justify-content:space-between;
+  font-size: x-large;
+}
+
+.account_button {
+  height: 100%;
+  width: 200rpx;
+  background-color: rgb(44, 44, 44);
+  line-height: 100rpx;
+  text-align: center;
+  color: rgb(153, 153, 153);
+  font-size: large;
+}
+
+.trolley {
+  z-index:2;
+  width:70rpx;
+  height:70rpx;
+  background-size:100% 100%;
+  margin-left:22rpx;
+  margin-top:25rpx;
+}
+
+.trolley_container {
+  position:absolute;
+  left:20rpx;
+  bottom:30rpx;
+  border-radius:50%;
+  width:119rpx;
+  height:120rpx;
+  background-color:rgb(102, 102, 102);
+  z-index:1;
+}
+
+.can_pay {
+  background-color: rgb(255, 209, 96);
+  color: black;
+}

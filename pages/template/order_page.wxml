@@ -1,0 +1,39 @@
+<template name="order_page">
+  <view class="order_page_container">
+    <scroll-view class="left_category_container" scroll-y="true" style="height: 1100rpx">
+      <view wx:for="{{categorys}}"  class="category {{category_select == index? 'category_select' : ''}}" wx:key="" data-index='{{index}}' bindtap='categoryTap'>
+        {{item}}
+      </view>
+    </scroll-view>  
+    <scroll-view class="order_menu_container">   
+      <block wx:for="{{order_menu[category_select]}}" wx:key=''>
+        <view class="dish_container">
+          <image src="{{item.src}}" class="category_menu_img"></image>
+          <view class="dish_name_cost">
+            <view class="dish_name">{{item.name}}</view>
+            <view class='dosh_detail'>{{item.detail}}</view>
+            <view class='dish_buttom'>
+              <view class='price_container'> {{'￥' + item.price}}</view>
+              <view class='reduce_add_dish'>
+                <view class='reduce' hidden='{{item.order_num == 0}}'  data-index="{{index}}" bindtap='order_reduce'>-</view>
+                <text class='dish_num' hidden='{{item.order_num == 0}}'>{{item.order_num}}</text>
+                <image class="add" data-index="{{index}}" src="http://xs01.meituan.net/waimai_web/img/restaurant/add-cart.svg" bindtap='order_add'></image>
+              </view>
+            </view>
+          </view>
+        </view>
+      </block>
+    </scroll-view>
+    <view class='account_foot'>
+      <view class="trolley_container  {{account_num > 0? 'can_pay' : ''}}">
+        <view class="trolley" style="background-image: url(http://xs01.meituan.net/waimai_web/img/restaurant/cart.svg)"></view>
+      </view>
+      <view class='account'>
+        <view class='cost_container'>
+          <view class='cost'>{{'￥' + account_num}}</view>
+          <view class="account_button {{account_num > 0? 'can_pay' : ''}}">去结算</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>

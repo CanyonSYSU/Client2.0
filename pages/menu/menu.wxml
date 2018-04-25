@@ -1,0 +1,20 @@
+<!--index.wxml-->
+<import src="../template/evaluate.wxml" />
+<import src="../template/order_page.wxml" />
+<view class="container">
+  <view class="header">
+    <block wx:for="{{swiper_title}}" wx:key="">
+      <view class="title {{index==currentPage?'selected':''}}" data-index="{{index}}">{{item.text}}</view>
+    </block>
+  </view>
+
+  <swiper class="swiper" current="{{currentPage}}" bindchange="turnTitle">
+    <swiper-item id="orderPage">
+      <template is="order_page" data="{{categorys, categoryTap, category_select, order_menu, account_num}}"/>
+    </swiper-item>
+    <swiper-item id="evaluate_page">
+      <template is="evaluate_page" data="{{evaluate_tags, client_evaluate}}"/>
+    </swiper-item>
+      <swiper-item id="restaurantPage"></swiper-item>
+  </swiper>
+</view>
