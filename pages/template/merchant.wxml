@@ -1,0 +1,20 @@
+<template name='merchant_page'>
+  <view class='merchant_page_backgroud'></view>
+  <view class='merchant_page_container'>
+    <view class='merchant_item_container'>
+      <image class='merchant_icon icon_left' src='../../images/icon_location.png'></image>
+      <view class='merchant_text'>小谷围街贝岗村中二横路</view>
+      <image class='merchant_icon phone' src='../../images/icon_phone.png'></image>
+    </view>
+    <view class='merchant_item_container'>
+      <image class='merchant_icon icon_left' src='../../images/icon_security.png'></image>
+      <view class='merchant_text'>查看安全证书</view>
+    </view>
+    <view class='merchant_item_container'>
+      <image class='merchant_icon icon_left' src='../../images/icon_time.png'></image>
+      <view class='merchant_text'>营业时间：10:00-21:00</view>
+    </view>
+    <view class='more_information'>
+    </view>
+  </view>
+</template>

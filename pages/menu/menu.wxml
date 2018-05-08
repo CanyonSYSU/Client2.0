@@ -1,6 +1,7 @@
 <!--index.wxml-->
 <import src="../template/evaluate.wxml" />
 <import src="../template/order_page.wxml" />
+<import src="../template/merchant.wxml" />
 <view class="container">
   <view class="header">
     <block wx:for="{{swiper_title}}" wx:key="">
@@ -10,11 +11,13 @@
 
   <swiper class="swiper" current="{{currentPage}}" bindchange="turnTitle">
     <swiper-item id="orderPage">
-      <template is="order_page" data="{{categorys, categoryTap, category_select, order_menu, account_num}}"/>
+      <template is="order_page" data="{{categorys, categoryTap, category_select, order_menu, account_num, dish_detail, trolley_list, gray_backgroud_hidden, trolley_hidden}}"/>
     </swiper-item>
     <swiper-item id="evaluate_page">
       <template is="evaluate_page" data="{{evaluate_tags, client_evaluate}}"/>
     </swiper-item>
-      <swiper-item id="restaurantPage"></swiper-item>
+      <swiper-item id="merchant">
+        <template is="merchant_page" data=""/>
+      </swiper-item>
   </swiper>
 </view>

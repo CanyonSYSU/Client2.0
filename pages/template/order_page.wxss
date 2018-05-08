@@ -101,7 +101,7 @@
 
 .account_foot {
   width: 100%;
-  height: 300rpx;
+  height: 140rpx;
   position: absolute;
   bottom: 0;
   z-index: 1;
@@ -159,10 +159,159 @@
   width:119rpx;
   height:120rpx;
   background-color:rgb(102, 102, 102);
-  z-index:1;
+  z-index:2;
 }
 
 .can_pay {
   background-color: rgb(255, 209, 96);
   color: black;
+}
+
+.dish_detail_background {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 1;
+  background-color: rgb(102, 102, 102);
+  opacity: 0.5;
+}
+
+.dish_detail_box {
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  margin-top: 110rpx;
+}
+
+.dish_detail_img {
+  width: 650rpx;
+  height: 490rpx;
+}
+
+.dish_detail_container {
+  width: 650rpx;
+  height: 755rpx;
+  background-color: white;
+  border-radius: 10rpx;
+}
+
+.dish_detail_container_name {
+  margin: 25rpx 0 0 35rpx;
+  font-weight: 550;
+  font-size: 16px;
+}
+
+.dish_detail_container_detail {
+  font-size: 12px;
+  font-weight: 300;
+  height: 25px;
+  overflow: hidden;
+  margin: 15rpx 0 0 35rpx;
+}
+
+.dish_detail_container_select {
+  background-color: rgb(250, 250, 250);
+  height: 85rpx;
+  margin-top: 20rpx;
+  padding: 20rpx 20rpx 0 35rpx;
+}
+
+.dish_detail_container_reduce {
+  width:60rpx;
+  height:60rpx;
+  border-radius:30rpx;
+  text-align:center;
+  border:1px solid #AAAAAA;
+  line-height:59rpx
+}
+
+.dish_detail_container_add {
+  width: 60rpx;
+  height: 60rpx;
+}
+
+.dish_detail_container_price_container {
+  color : #ff5a5a;
+  font-size: x-large;
+}
+
+.dish_detail_container_dish_num {
+  margin: 0rpx 18rpx 0rpx 18rpx;
+  font-size: large;
+  line-height: 60rpx;
+  height: 60rpx;
+}
+
+.close_detail_button_container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.close_detail_button {
+  margin-top: 30rpx;
+}
+
+.close_detail_button {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  font-size: xx-large;
+  border: 1px solid white;
+  text-align: center;
+  line-height: 70rpx;
+  color: white;
+}
+
+.trolley_list_container {
+  width: 100%;
+  position: absolute;
+  bottom: 110rpx;
+  z-index: 1;
+  background: white;
+}
+
+.trolley_item {
+  display: flex;
+  flex-direction: row;
+  height: 130rpx;
+  padding: 0 20rpx 0 20rpx;
+  align-items: center;
+  border-bottom: 1px solid #DDDDDD;
+}
+
+.trolley_list_name {
+  width: 390rpx;
+  margin-right: 20rpx;
+  height: 30px;
+  overflow: hidden;
+  font-size: medium;
+  line-height: 30px;
+}
+
+.trolley_list_price {
+  width: 100rpx;
+  font-size: medium;
+}
+
+.trolley_list_container .reduce_add_dish {
+  margin-left: 65rpx;
+}
+
+.trolley_list_container_top {
+  background-color: rgb(244, 244, 244);
+  height: 70rpx;
+}
+
+.clear_trolley_button {
+  float: right;
+  font-size: small;
+  margin: 20rpx 20rpx 0 0;
 }

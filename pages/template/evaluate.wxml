@@ -1,5 +1,5 @@
 <template name="evaluate_page">
-  <scroll-view scroll-y="true" style="height: 1100rpx">
+  <scroll-view scroll-y="true" style="height: 100%" lower-threshold="5" bindscrolltolower="evaluate_scroll_to_lower">
     <view class="evaluate_page_container" width="100%" height="1000rpx" background-color="black">
     <view class="score">
       <view class="merchants_score_container">

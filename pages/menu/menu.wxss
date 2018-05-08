@@ -1,5 +1,6 @@
 @import "../template/order_page.wxss";
 @import "../template/evaluate.wxss";
+@import "../template/merchant.wxss";
 .container {
   height: 100%;
   padding: 0;

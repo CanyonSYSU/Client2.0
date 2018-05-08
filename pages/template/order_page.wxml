@@ -7,7 +7,7 @@
     </scroll-view>  
     <scroll-view class="order_menu_container">   
       <block wx:for="{{order_menu[category_select]}}" wx:key=''>
-        <view class="dish_container">
+        <view class="dish_container" data-index="{{index}}" bindtap='open_detail_fuc'>
           <image src="{{item.src}}" class="category_menu_img"></image>
           <view class="dish_name_cost">
             <view class="dish_name">{{item.name}}</view>
@@ -15,18 +15,44 @@
             <view class='dish_buttom'>
               <view class='price_container'> {{'￥' + item.price}}</view>
               <view class='reduce_add_dish'>
-                <view class='reduce' hidden='{{item.order_num == 0}}'  data-index="{{index}}" bindtap='order_reduce'>-</view>
+                <view class='reduce' hidden='{{item.order_num == 0}}'  data-index="{{index}}" catchtap='order_reduce'>-</view>
                 <text class='dish_num' hidden='{{item.order_num == 0}}'>{{item.order_num}}</text>
-                <image class="add" data-index="{{index}}" src="http://xs01.meituan.net/waimai_web/img/restaurant/add-cart.svg" bindtap='order_add'></image>
+                <image class="add" data-index="{{index}}" src="http://xs01.meituan.net/waimai_web/img/restaurant/add-cart.svg" catchtap='order_add'></image>
               </view>
             </view>
           </view>
         </view>
       </block>
     </scroll-view>
-    <view class='account_foot'>
+
+  </view>
+
+  <view class='dish_detail_background' hidden="{{gray_backgroud_hidden}}">
+
+  </view>
+
+  <view class='trolley_list_container' hidden='{{trolley_hidden}}'>
+    <view class='trolley_list_container_top'>
+      <view class='clear_trolley_button' bindtap='clear_trolley'>清空购物车</view>
+    </view>
+    <scroll-view scroll-y="true" style='max-height: 600rpx'>
+      <block wx:for="{{trolley_list}}" wx:key=''>
+        <view class='trolley_item'>
+          <view class='trolley_list_name'>{{item.name}}</view>
+          <view class='trolley_list_price'>￥{{item.price}}</view>
+          <view class='reduce_add_dish'>
+          <view class='reduce' hidden='{{item.order_num == 0}}' catchtap='trolley_list_order_reduce' data-index="{{index}}">-</view>
+            <text class='dish_num' hidden='{{item.order_num == 0}}'>{{item.order_num}}</text>
+            <image class="add" data-index="{{index}}" src="http://xs01.meituan.net/waimai_web/img/restaurant/add-cart.svg" catchtap='trolley_list_order_add'></image>
+          </view>
+        </view>
+      </block>
+    </scroll-view>
+  </view>
+
+  <view class='account_foot'>
       <view class="trolley_container  {{account_num > 0? 'can_pay' : ''}}">
-        <view class="trolley" style="background-image: url(http://xs01.meituan.net/waimai_web/img/restaurant/cart.svg)"></view>
+        <view class="trolley" style="background-image: url(http://xs01.meituan.net/waimai_web/img/restaurant/cart.svg)" bindtap='trolley_open_close'></view>
       </view>
       <view class='account'>
         <view class='cost_container'>
@@ -35,5 +61,27 @@
         </view>
       </view>
     </view>
+
+  <view class='dish_detail_box' hidden="{{dish_detail.hidden}}">
+      <view class='dish_detail_container'>
+        <image class='dish_detail_img' src='{{dish_detail.img_src}}'></image>
+        <view class='dish_detail_container_name'>{{dish_detail.name}}</view>
+        <view class='dish_detail_container_detail'>{{dish_detail.detail}}</view>
+        <view class='dish_detail_container_select'>
+          <view class='dish_buttom'>
+              <view class='dish_detail_container_price_container'> {{'￥' + dish_detail.price}}</view>
+              <view class='reduce_add_dish'>
+                <view class='dish_detail_container_reduce' hidden='{{dish_detail.order_num == 0}}' bindtap='detail_order_reduce'>-</view>
+                <text class='dish_detail_container_dish_num' hidden='{{dish_detail.order_num == 0}}'>{{dish_detail.order_num}}</text>
+                <image class="dish_detail_container_add" src="http://xs01.meituan.net/waimai_web/img/restaurant/add-cart.svg" bindtap='detail_order_add'></image>
+              </view>
+            </view>
+        </view>
+
+        <view class='close_detail_button_container'>
+          <view class='close_detail_button' bindtap='close_detail'>×</view>
+        </view>
+      </view>
+
   </view>
 </template>
