@@ -112,7 +112,7 @@ var cotent_of_order_page = {
     detail: "有菠菜、鸡蛋、海带、香菇",
     price: 6,
     order_num: 0,
-    category_select: 0,
+    category: 0,
     index: 0,
   },
 

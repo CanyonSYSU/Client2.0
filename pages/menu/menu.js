@@ -75,7 +75,9 @@ Page({
     cost += info.price;
 
     var order_menu_tmp = this.data.order_menu;
-    order_menu_tmp[info.category_select][info.index].order_num++;
+    order_menu_tmp[info.category][info.index].order_num++;
+
+    this.order_dish_to_trolley(info.category, info.index);
 
     this.setData(
       {
@@ -104,7 +106,9 @@ Page({
     cost -= info.price;
 
     var order_menu_tmp = this.data.order_menu;
-    order_menu_tmp[info.category_select][info.index].order_num--;
+    order_menu_tmp[info.category][info.index].order_num--;
+
+    this.reduce_dish_to_trolley(info.category, info.index);
 
     this.setData(
       {
@@ -219,7 +223,7 @@ Page({
     dish_detail_tmp.detail = info.detail;
     dish_detail_tmp.order_num = info.order_num;
     dish_detail_tmp.price = info.price;
-    dish_detail_tmp.category_select = this.data.category_select;
+    dish_detail_tmp.category = this.data.category_select;
     dish_detail_tmp.index = e.currentTarget.dataset.index;
 
     this.setData(
