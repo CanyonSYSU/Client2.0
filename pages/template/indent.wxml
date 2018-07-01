@@ -1,0 +1,21 @@
+<template name='indent'>
+  <view class='page_backgroud'></view>
+  <scroll-view scroll-y="true" style="height: 100%" lower-threshold="5" class='indent_page_container'>
+    <block wx:for="{{indent_list}}"  wx:for-index="indent_index" wx:key="">
+      <view class='indent_item_container'>
+        <view class='indent_top_container'>
+          <block wx:for="{{indent_list[indent_index].order_contain}}"  wx:for-item="list" wx:for-index="food_index" wx:key="">
+            <view class='indent_item'>
+              <view class='indent_food'>{{list.name}}</view>
+              <view class='indent_food'>X{{list.order_num}}</view>
+            </view>
+          </block>
+           <view class='indent_total'>实付￥<span class='total_num'>{{indent_list[indent_index].total}}</span></view>
+        </view>
+        <view class='indent_button_container'>
+          <view class='evaluate_button' bindtap='to_indent_evaluate'>评价</view>
+        </view>
+      </view>
+    </block>
+  </scroll-view>
+</template>

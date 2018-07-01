@@ -15,7 +15,7 @@
   box-sizing: border-box;
 }
 
-.merchant_page_backgroud {
+.page_backgroud {
   background-color: #F4F4F4;
   width: 100%;
   height: 100%

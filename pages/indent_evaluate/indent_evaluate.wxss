@@ -1,0 +1,46 @@
+/* pages/indent_evaluate/indent_evaluate.wxss */
+
+.indent_page_container {
+  margin-top: 20rpx;
+  font-size: small;
+}
+
+input, textarea {
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+
+.evaluate_text_input {
+  width: 650rpx;
+  height: 300rpx;
+  margin: 40rpx;
+  border: 1px solid #999;
+}
+
+.score_input {
+  width: 650rpx;
+  height: 100rpx;
+  margin: 40rpx;
+  border: 1px solid #999;
+}
+
+.indent_section_title {
+  margin-left: 40rpx;
+}
+
+.button {
+  width: 120rpx;
+  height: 60rpx;
+  float: right;
+  border: 1px solid #999;
+  text-align: center;
+  line-height: 60rpx;
+}
+
+.submit_btn {
+  margin-right: 40rpx;
+}
+
+.btn-area {
+  margin: 80rpx 60rpx 0 0;
+}

@@ -27,7 +27,7 @@
 
   </view>
 
-  <view class='dish_detail_background' hidden="{{gray_backgroud_hidden}}">
+  <view class='dish_detail_background' hidden="{{gray_backgroud_hidden}}" bindtap='back_order_page'>
 
   </view>
 
@@ -57,7 +57,7 @@
       <view class='account'>
         <view class='cost_container'>
           <view class='cost'>{{'￥' + account_num}}</view>
-          <view class="account_button {{account_num > 0? 'can_pay' : ''}}">去结算</view>
+          <view bindtap='to_pay' class="account_button {{account_num > 0? 'can_pay' : ''}}">去结算</view>
         </view>
       </view>
     </view>

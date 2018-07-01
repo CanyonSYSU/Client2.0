@@ -2,10 +2,11 @@
 <import src="../template/evaluate.wxml" />
 <import src="../template/order_page.wxml" />
 <import src="../template/merchant.wxml" />
+<import src="../template/indent.wxml" />
 <view class="container">
   <view class="header">
     <block wx:for="{{swiper_title}}" wx:key="">
-      <view class="title {{index==currentPage?'selected':''}}" data-index="{{index}}">{{item.text}}</view>
+      <view class="title {{index==currentPage?'selected':''}}" data-index="{{index}}" bindtap='swiper_click'>{{item.text}}</view>
     </block>
   </view>
 
@@ -14,10 +15,13 @@
       <template is="order_page" data="{{categorys, categoryTap, category_select, order_menu, account_num, dish_detail, trolley_list, gray_backgroud_hidden, trolley_hidden}}"/>
     </swiper-item>
     <swiper-item id="evaluate_page">
-      <template is="evaluate_page" data="{{evaluate_tags, client_evaluate}}"/>
+      <template is="evaluate_page" data="{{merchant_comment_score, evaluate_tags, client_evaluate}}"/>
     </swiper-item>
-      <swiper-item id="merchant">
-        <template is="merchant_page" data=""/>
-      </swiper-item>
+    <swiper-item id="indent">
+      <template is="indent" data="{{indent_list}}"/>
+    </swiper-item>
+    <swiper-item id="merchant">
+      <template is="merchant_page" data="{{merchant_information}}"/>
+    </swiper-item>
   </swiper>
 </view>

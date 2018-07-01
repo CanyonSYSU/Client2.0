@@ -1,0 +1,17 @@
+<!--pages/indent_evaluate/indent_evaluate.wxml-->
+<view class='indent_page_container'>
+  <form>
+    <view>
+      <view class='indent_section_title'>评分</view>
+      <input class='score_input'></input>
+    </view>
+    <view>
+      <view class='indent_section_title'>评价</view>
+      <textarea class='evaluate_text_input'></textarea>
+    </view>
+    <view class="btn-area">
+      <view class='button'>清空</view>
+      <view class='button submit_btn'>提交</view>
+    </view>
+  </form>
+</view>

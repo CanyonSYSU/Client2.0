@@ -2,7 +2,9 @@
   "pages": [
     "pages/index/index",
     "pages/logs/logs",
-    "pages/menu/menu"
+    "pages/menu/menu",
+    "pages/order_form/order_form",
+    "pages/indent_evaluate/indent_evaluate"
   ],
   "window": {
     "backgroundTextStyle": "light",

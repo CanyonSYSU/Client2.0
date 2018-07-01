@@ -3,56 +3,56 @@
     <view class="evaluate_page_container" width="100%" height="1000rpx" background-color="black">
     <view class="score">
       <view class="merchants_score_container">
-        <text class="merchants_score">4.9</text>
+        <text class="merchants_score">{{merchant_comment_score.overall_score}}</text>
         <text class="merchants_score_text">商家评分</text>
       </view>
       <view class="star_evaluate_container">
         <view class="star_container">
           <text>口味</text>
           <view class="star_ranking" style="background-image: url(http://xs01.meituan.net/waimai_web/img/restaurant/star-gray.svg)">
-            <view class="star_score"  style="background-image: url(http://xs01.meituan.net/waimai_web/img/restaurant/star-yellow.svg)"></view>
+            <view class="star_score"  style="background-image: url(http://xs01.meituan.net/waimai_web/img/restaurant/star-yellow.svg); width: {{merchant_comment_score.taste_score * 25 + 'rpx'}}"></view>
           </view>
-          <text>4.7</text>
+          <text>{{merchant_comment_score.taste_score}}</text>
         </view>
         <view class="star_container">
           <text>外观</text>
           <view class="star_ranking" style="background-image: url(http://xs01.meituan.net/waimai_web/img/restaurant/star-gray.svg)">
-            <view class="star_score"  style="background-image: url(http://xs01.meituan.net/waimai_web/img/restaurant/star-yellow.svg)"></view>
+            <view class="star_score"  style="background-image: url(http://xs01.meituan.net/waimai_web/img/restaurant/star-yellow.svg); width: {{merchant_comment_score.sight_score * 25 + 'rpx'}}"></view>
           </view>
-          <text>4.7</text>
+          <text>{{merchant_comment_score.sight_score}}</text>
         </view>
       </view>
       <view class="distribution_score_container">
-        <text class="distribution_score">4.9</text>
+        <text class="distribution_score">{{merchant_comment_score.service_score}}</text>
         <text class="distribution_score_text">服务评分</text>
       </view>
     </view>
 
     <view class="evaluate_tag_container">
-      <view class="evaluate_tag_text" wx:for="{{evaluate_tags}}" wx:key="">{{item.tag + '(' + item.num + ')'}}</view>
+      <view class="evaluate_tag_text" wx:for="{{evaluate_tags}}" wx:key="">{{item.tag + '(' + item.count + ')'}}</view>
     </view>
 
     <view class='client_evaluate' wx:for="{{client_evaluate}}" wx:key="">
       <view class='top_container'>
 
         <view class="top_left_container">
-          <image class='buddha' src="{{item.buddha_src}}"></image>
+          <image class='buddha' src="{{item.usr_photo}}"></image>
           <view class='name_star_box'>
-            <text>ALn608101222</text>
+            <text>{{ item.usr_name }}</text>
             <view class='client_evaluate_star'>
               <view class="star_ranking" style="background-image: url(http://xs01.meituan.net/waimai_web/img/restaurant/star-gray.svg)">
-                <view class="star_score"  style="background-image: url(http://xs01.meituan.net/waimai_web/img/restaurant/star-yellow.svg)">
+                <view class="star_score"  style="background-image: url(http://xs01.meituan.net/waimai_web/img/restaurant/star-yellow.svg); width: {{ item.comment_star * 25 + 'rpx' }}">
                 </view>
               </view>
             </view>
           </view>
         </view>
 
-        <view class='date'>2018.04.18</view>
+        <view class='date'>{{ item.comment_at }}</view>
       </view>
 
-      <view class="client_evaluate_text">{{item.client_evaluate_text}}</view>
-      <view class="merchant_evaluate_text">{{"商家回复：" + item.merchant_evaluate_text}}</view>
+      <view class="client_evaluate_text">{{item.client_text}}</view>
+      <view class="merchant_evaluate_text">{{"商家回复：" + item.merchant_text}}</view>
     </view>
   </view>
   </scroll-view>

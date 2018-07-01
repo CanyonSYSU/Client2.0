@@ -1,0 +1,52 @@
+<!--pages/order_form/order_form.wxml-->
+<scroll-view scroll-y='true' style='height: 100%;'>
+<view class='order_form_container'>
+  <view class='foods_box content_box'>
+    <block wx:for="{{trolley_list}}" wx:key=''>
+      <view class='trolley_item'>
+        <image class='foods_img' src="{{item.src}}"></image>
+        <view class='trolley_list_name'>{{item.name}}</view>
+        <text class='dish_num' hidden='{{item.order_num == 0}}'>X{{item.order_num}}</text>
+        <view class='trolley_list_price'>￥{{item.price}}</view>
+      </view>
+    </block>
+    <view class='cost_container'>
+      <view class='cost'>
+        <span class='small_text'>实付</span>
+        <span class='account_num'>{{account_num}}</span>
+      </view>
+    </view>
+  </view>
+
+  <view class='content_box'>
+    <view class='meal_info'>
+      <view class='title_text'>上餐信息</view>
+      <view class='data_item_box'>
+        <span class='normal_text'>上餐时间</span>
+        <span class='data_text align_right'>尽快上餐</span>
+      </view>
+      <view class='data_item_box'>
+        <span class='normal_text'>桌号</span>
+        <span class='data_text align_right'>18</span>
+      </view>
+    </view>
+  </view>
+
+  <view class='content_box'>
+    <view class='meal_info'>
+      <view class='title_text'>订单信息</view>
+      <view class='data_item_box'>
+        <span class='data_text align_right'>1220 8462 3088 3101 795</span>
+      </view>
+      <view class='data_item_box'>
+        <span class='normal_text'>支付方式</span>
+        <span class='data_text align_right'>在线支付</span>
+      </view>
+      <view class='data_item_box'>
+        <span class='normal_text'>下单时间</span>
+        <span class='data_text align_right'>2018-06-06 11：44</span>
+      </view>
+    </view>
+  </view>
+</view>
+</scroll-view>

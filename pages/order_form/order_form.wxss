@@ -1,0 +1,112 @@
+/* pages/order_form/order_form.wxss */
+page{
+  height: 100%;
+  background-color: #F4F4F4;
+}
+
+::-webkit-scrollbar{
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+
+.order_form_container {
+  width: 100%;
+  padding: 0 20rpx 0 20rpx;
+}
+
+.content_box {
+  margin-top: 40rpx;
+  width: 710rpx;
+  background-color: white;
+}
+
+.trolley_item {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  height: 150rpx;
+  padding: 0 40rpx 0 40rpx;
+  align-items: center;
+}
+
+.trolley_list_name {
+  width: 300rpx;
+  margin-right: 20rpx;
+  height: 30px;
+  overflow: hidden;
+  font-size: medium;
+  line-height: 30px;
+}
+
+.trolley_list_price {
+  font-size: medium;
+}
+
+.foods_img {
+  width: 100rpx;
+  height: 100rpx;
+}
+
+.dish_num {
+  font-size: xx-small;
+}
+
+.cost_container {
+  width: 630rpx;
+  margin-left: 40rpx;
+  height: 100rpx;
+  margin-top: 20rpx;
+  border-top: 1px solid #DDDDDD;
+}
+
+.cost {
+  float: right;
+  font-size: large;
+  margin-top: 30rpx;
+}
+
+.small_text {
+  font-size: small;
+  margin-right: 20rpx;
+}
+
+.normal_text {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.account_num {
+  font-size: large;
+}
+
+.form_id {
+  padding: 40rpx 0 40rpx 0;
+  border-top: 1px solid #DDDDDD;
+}
+
+.title_text {
+  font-size: 17px;
+  padding: 40rpx 0 40rpx 0;
+}
+
+.meal_info {
+  margin-top: 20rpx;
+  padding: 0 40rpx 0 40rpx;
+  font-weight: 600;
+}
+
+.align_right {
+  float: right;
+}
+
+.data_text {
+  font-size: small;
+  font-weight: 400;
+  color: #444;
+}
+
+.data_item_box {
+  padding: 40rpx 0 40rpx 0;
+  border-top: 1px solid #EEE;
+}

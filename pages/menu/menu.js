@@ -1,6 +1,9 @@
 var content_of_evaluate = require("../template/evaluate.js");
 var cotent_of_order_page = require("../template/order_page.js");
 var content_of_merchant_page = require("../template/merchant.js");
+var Util = require('../../utils/util');
+const app = getApp()
+
 Page({
 
   /**
@@ -10,11 +13,10 @@ Page({
     swiper_title : [
       {text: "点菜", id: 1},
       {text: "评价", id: 2},
-      {text: "商家", id: 3},
+      {text: "订单", id: 3},
+      {text: "商家", id: 3 },
     ],
     currentPage: 0,
-    howMuch: 12,
-    cost: 0,
     evaluate_tags: content_of_evaluate.templates.evaluate_tag,
     client_evaluate: content_of_evaluate.templates.client_evaluate,
     client_evaluate_index: content_of_evaluate.templates.client_evaluate_index,
@@ -27,7 +29,7 @@ Page({
     dish_detail: cotent_of_order_page.templates.dish_detail,
     trolley_list: cotent_of_order_page.templates.trolley_list,
     gray_backgroud_hidden: cotent_of_order_page.templates.gray_backgroud_hidden,
-    trolley_hidden: cotent_of_order_page.templates.trolley_hidden
+    trolley_hidden: cotent_of_order_page.templates.trolley_hidden,
   },
 
   turnTitle: function (e) {
@@ -53,7 +55,22 @@ Page({
       }
     )
   },
-  
+  /*顶部点击跳转*/ 
+  swiper_click: function (e) {
+    this.setData({
+      currentPage: e.currentTarget.dataset.index
+    })
+  },
+  //点击屏幕从购物车页面回到点菜界面
+  back_order_page: function (e) {
+    if (!this.trolley_hidden) {
+      this.setData({
+        trolley_hidden: true,
+        gray_backgroud_hidden: true
+      })
+    }
+  },
+
   order_reduce: function (e) {
     var info = this.data.order_menu;
     info[this.data.category_select][e.currentTarget.dataset.index].order_num--;
@@ -118,6 +135,24 @@ Page({
       }
     )
   },
+  // 跳转评价
+  to_indent_evaluate: function (e) {
+    wx.navigateTo({
+      url: '../indent_evaluate/indent_evaluate?formId'
+    })
+  },
+
+  //结算跳转
+  to_pay : function (e) {
+    this.submit_order()
+    if (this.data.account_num > 0) {
+      wx.setStorageSync('trolley_list', this.data.trolley_list)
+      wx.setStorageSync('account_num', this.data.account_num)
+      wx.navigateTo({
+        url: '../order_form/order_form'
+      })
+    }
+  },
 
   order_dish_to_trolley : function (category, index) {
     var order_menu_tmp = this.data.order_menu;
@@ -140,6 +175,7 @@ Page({
     trolley_item.order_num = 1;
     trolley_item.category = category;
     trolley_item.index = index;
+    trolley_item.src = order_menu_tmp[category][index].src;
     trolley_list_tmp.push(trolley_item);
 
     this.setData(
@@ -278,19 +314,147 @@ Page({
   },
 
   evaluate_scroll_to_lower : function () {
-    let client_evaluate_tmp = this.data.client_evaluate.concat(this.data.client_evaluate_new);
-    this.setData(
-      {
-        client_evaluate: client_evaluate_tmp
-      }
-    )
-
+    console.log('get new comment 306')
+    this.get_merchant_new_comments()
   },
 
   onLoad: function (options) {
-    
+    this.get_merchant_comment_score();
+    this.get_merchant_comment_tags();
+    this.get_merchant_comments();
+    this.get_merchant_information();
+    this.get_indent_list();
   },
-
+  //获取商家总评分
+  get_merchant_comment_score () {
+    var that = this;
+    wx.request({
+       // url: "https://private-ab6e0-canyonsysu1.apiary-mock.com/v1/comments/scores",
+      // url: "https://kangblog.top/v1/comments/scores",
+      url: "http://192.168.43.147:7070/v1/comments/scores",
+      success: function (res) {
+        console.log(res.data)
+        that.setData({
+          merchant_comment_score: res.data
+        })
+      }
+    }) 
+  },
+  //获取评价标签和数量
+  get_merchant_comment_tags() {
+    var that = this;
+    wx.request({
+      // url: "https://private-ab6e0-canyonsysu1.apiary-mock.com/v1/comments/tags",
+      // url: "https://kangblog.top/v1/tags?tag=",
+      url: "http://192.168.43.147:7070/v1/comment/tags?tag=",
+      success: function (res) {
+        console.log(res.data)
+        that.setData({
+          evaluate_tags: res.data
+        })
+      }
+    })
+  },
+  //获取新评论
+  get_merchant_new_comments() {
+    var that = this;
+    let begin = this.data.client_evaluate.length
+    wx.request({
+       // url: "https://private-ab6e0-canyonsysu1.apiary-mock.com/v1/comments/tags",
+      // url: "https://kangblog.top/v1/tags?tag=",
+      url: "http://192.168.43.147:7070/v1/comment/offset?begin=" + begin + "&offset=10",
+      success: function (res) {
+        console.log(res)
+        if (res.data.status === -1) {
+          return
+        }
+        let client_evaluate_tmp = that.data.client_evaluate.concat(res.data);
+        that.setData({
+          client_evaluate: client_evaluate_tmp
+        })
+      }
+    })
+  },
+  //获取评论
+  get_merchant_comments() {
+    var that = this;
+    let begin = this.data.client_evaluate.length
+    wx.request({
+       // url: "https://private-ab6e0-canyonsysu1.apiary-mock.com/v1/comments/tags",
+      // url: "https://kangblog.top/v1/tags?tag=",
+      url: "http://192.168.43.147:7070/v1/comment/offset?begin=" + '0' + "&offset=10",
+      success: function (res) {
+        console.log(res)
+        if (res.data.status === -1) {
+          return
+        }
+        let client_evaluate_tmp = that.data.client_evaluate.concat(res.data);
+        that.setData({
+          client_evaluate: client_evaluate_tmp
+        })
+      }
+    })
+  },
+  // 获取订单
+  get_indent_list() {
+    var that = this;
+    let begin = this.data.client_evaluate.length
+    wx.request({
+      url: "https://private-ab6e0-canyonsysu1.apiary-mock.com/v1/orderphone",
+      success: function (res) {
+        console.log(res)
+        if (res.data.status === -1) {
+          return
+        }
+        that.setData({
+          indent_list: res.data
+        })
+      }
+    })
+  },
+  //获取商家信息
+  get_merchant_information() {
+    var that = this;
+    wx.request({
+      url: "https://private-ab6e0-canyonsysu1.apiary-mock.com/v1/resturants/name",
+      // url: "https://private-ab6e0-canyonsysu1.apiary-mock.com/v1/resturants/name",
+      // url: "http://192.168.43.147:7070/v1/restaurants?name",
+      success: function (res) {
+        console.log(res.data)
+        that.setData({
+          merchant_information: res.data[0]
+        })
+      }
+    })
+  },
+  // 提交订单
+  submit_order() {
+    let that = this;
+    console.log(this.trolley_list)
+    wx.request({
+      url: "http://op.juhe.cn/onebox/weather/query",
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      method: "POST",
+      data: Util.json2Form({ 
+        "table_id": 1,
+        "order_num": that.data.trolley_list.length,
+        "total": that.data.account_num,
+        "openId": app.globalData.openId,
+        "order_time": Util.formatTime(new Date())
+       }),
+      success: function (res) {
+        that.clear_trolley()
+        that.setData({
+        });
+        if (res == null || res.data == null) {
+          console.error('网络请求失败');
+          return;
+        }
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

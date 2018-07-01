@@ -11,8 +11,27 @@ Page({
   },
   //事件处理函数
   bindViewTap: function() {
-    wx.navigateTo({
-      url: '../menu/menu'
+    let code;
+    let that = this
+    wx.login({
+      //获取code
+      success: function (res) {
+        code = res.code //返回code
+        wx.request({
+          url: 'https://api.weixin.qq.com/sns/jscode2session?appid=wxa9cb8c430cad2a03&secret=621450b680613517f2a595e6a90ff582&js_code=' + code + '&grant_type=authorization_code',
+          data: {},
+          header: {
+            'content-type': 'application/json'
+          },
+          success: function (res) {
+            console.log(res.data)
+            app.globalData.openId = res.data.openid
+          }
+        })
+        wx.navigateTo({
+          url: '../menu/menu'
+        })
+      }
     })
   },
   onLoad: function () {
@@ -50,5 +69,5 @@ Page({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
     })
-  }
+  },
 })
