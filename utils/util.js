@@ -17,6 +17,7 @@ const formatNumber = n => {
 const json2Form = function (json) {
   var str = [];
   for (var p in json) {
+    console.log(json[p])
     str.push(encodeURIComponent(p) + "=" + encodeURIComponent(json[p]));
   }
   return str.join("&");

@@ -8,8 +8,8 @@ var cotent_of_order_page = {
 
   category_select : 0,
   
-  order_menu : [
-    [
+    order_menu : [
+      [
       {
         src: "http://p0.meituan.net/210.0/xianfudwm/2b09f330570aaee92188d7f7b3700edf135298.jpg",
         name: "鲜蔬芙蓉汤",

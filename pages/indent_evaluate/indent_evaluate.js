@@ -1,6 +1,31 @@
 // pages/indent_evaluate/indent_evaluate.js
 Page({
 
+  // 提交评论
+  submit_order() {
+    let that = this;
+    wx.request({
+      url: "http://192.168.43.147:7070/v1/comments",
+      header: {
+        // "Content-Type": "application/x-www-form-urlencoded"
+        "Content-Type": "application/json"
+      },
+      method: "POST",
+      data: {
+        
+      },
+      success: function (res) {
+        that.clear_trolley()
+        that.setData({
+        });
+        if (res == null || res.data == null) {
+          console.error('网络请求失败');
+          return;
+        }
+      }
+    })
+  },
+
   /**
    * 页面的初始数据
    */

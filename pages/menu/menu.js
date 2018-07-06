@@ -319,11 +319,52 @@ Page({
   },
 
   onLoad: function (options) {
+    this.get_categorys()
+    this.get_order_menu()
     this.get_merchant_comment_score();
     this.get_merchant_comment_tags();
     this.get_merchant_comments();
     this.get_merchant_information();
     this.get_indent_list();
+  },
+  //获取种类
+  get_categorys() {
+    var that = this;
+    wx.request({
+      // url: "https://private-ab6e0-canyonsysu1.apiary-mock.com/v1/comments/scores",
+      // url: "https://kangblog.top/v1/comments/scores",
+      url: "http://192.168.43.147:7070/v1/menufood/categorys",
+      success: function (res) {
+        console.log(res.data)
+        that.setData({
+          categorys: res.data
+        })
+      }
+    })
+  },
+  //获取菜单
+  get_order_menu() {
+    var that = this;
+    wx.request({
+      // url: "https://private-ab6e0-canyonsysu1.apiary-mock.com/v1/comments/scores",
+      // url: "https://kangblog.top/v1/comments/scores",
+      url: "http://192.168.43.147:7070/v1/menufood/tag",
+      success: function (res) {
+        try {
+          for (let i = 0; i < res.data.length; i++) {
+            for (let j = 0; j < res.data[i].length; j ++) {
+              res.data[i][j].order_num = 0
+            }
+          }
+        } catch (err) {
+          console.log(err)
+        }
+        console.log(res.data)
+        that.setData({
+          order_menu: res.data
+        })
+      }
+    })
   },
   //获取商家总评分
   get_merchant_comment_score () {
@@ -400,7 +441,7 @@ Page({
     var that = this;
     let begin = this.data.client_evaluate.length
     wx.request({
-      url: "https://private-ab6e0-canyonsysu1.apiary-mock.com/v1/orderphone",
+      url: "http://192.168.43.147:7070/v1/orderphone?phone=" + app.globalData.openId,
       success: function (res) {
         console.log(res)
         if (res.data.status === -1) {
@@ -416,9 +457,9 @@ Page({
   get_merchant_information() {
     var that = this;
     wx.request({
-      url: "https://private-ab6e0-canyonsysu1.apiary-mock.com/v1/resturants/name",
+      //url: "https://private-ab6e0-canyonsysu1.apiary-mock.com/v1/resturants/name",
       // url: "https://private-ab6e0-canyonsysu1.apiary-mock.com/v1/resturants/name",
-      // url: "http://192.168.43.147:7070/v1/restaurants?name",
+      url: "http://192.168.43.147:7070/v1/restaurants?name",
       success: function (res) {
         console.log(res.data)
         that.setData({
@@ -430,20 +471,30 @@ Page({
   // 提交订单
   submit_order() {
     let that = this;
-    console.log(this.trolley_list)
+    console.log(this.data.trolley_list)
     wx.request({
-      url: "http://op.juhe.cn/onebox/weather/query",
+      url: "http://192.168.43.147:7070/v1/orders",
       header: {
-        "Content-Type": "application/x-www-form-urlencoded"
+        // "Content-Type": "application/x-www-form-urlencoded"
+        "Content-Type": "application/json"
       },
       method: "POST",
-      data: Util.json2Form({ 
+      /*data: Util.json2Form({ 
         "table_id": 1,
         "order_num": that.data.trolley_list.length,
         "total": that.data.account_num,
+        "order_contain": that.data.trolley_list,
         "openId": app.globalData.openId,
         "order_time": Util.formatTime(new Date())
-       }),
+       }),*/
+      data: {
+        "table_id": 1,
+        "order_num": that.data.trolley_list.length,
+        "total": that.data.account_num,
+        "order_contain": that.data.trolley_list,
+        "openId": app.globalData.openId,
+        "order_time": Util.formatTime(new Date())
+      },
       success: function (res) {
         that.clear_trolley()
         that.setData({

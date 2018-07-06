@@ -12,9 +12,6 @@
           </block>
            <view class='indent_total'>实付￥<span class='total_num'>{{indent_list[indent_index].total}}</span></view>
         </view>
-        <view class='indent_button_container'>
-          <view class='evaluate_button' bindtap='to_indent_evaluate'>评价</view>
-        </view>
       </view>
     </block>
   </scroll-view>
